@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+        
+        <context:component-scan base-package="com.foodpanda,com.exceptions" />
+  
+        <bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/jsps/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	<bean id="connection"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/versioning" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	
+	
+	<bean id="roleVoter"
+	class="org.springframework.security.access.vote.RoleVoter">
+	<property name="rolePrefix" value="" />
+</bean>
+	<bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<constructor-arg ref="roleVoter">
+		</constructor-arg>
+	</bean>
+	
+	
+       </beans>
+	
+	
+	 <!-- <bean id="user" class="com.foodpanda.daos.UserControllerDaoImpl"></bean>
+	<bean class="com.foodpanda.validations.UserValidationImpl"></bean>
+	<bean class="com.foodpanda.services.UserControllerService"></bean>
+	
+	<bean  class="com.foodpanda.services.Employee_PassportServiceLayer"></bean>
+	
+	<bean   class="com.foodpanda.pojos.Employee" autowire="byName">
+	<constructor-arg ref="passp"></constructor-arg>
+	
+	</bean>
+	
+	<bean name="pPort"  class="com.foodpanda.pojos.Passport"></bean>
+    
+      </beans>
+	
+	<bean id="emp" name="emp" class="com.foodpanda.pojos.Employee"  >
+	
+	<property name="eSalary" value="26000" ></property>
+	
+	<property name="pPort" ref="passport"></property>
+	<constructor-arg value="Srinu"></constructor-arg>
+		<constructor-arg > <value>10</value></constructor-arg>
+	
+	</bean>
+	
+	<bean id="emp1" name="emp1" class="com.foodpanda.pojos.Employee" scope="prototype"  >
+	
+	<property name="eSalary" value="27000" ></property>
+	
+	<property name="pPort" ref="passport"></property>
+	<constructor-arg value="Srinu"></constructor-arg>
+	
+	</bean>
+	
+	<bean id="passport" class="com.foodpanda.pojos.Passport"></bean>
+	
+
+ -->
+			<!-- <list>
+				<ref bean="roleVoter" />
+				<ref bean="authenticatedVoter" />
+			</list> -->

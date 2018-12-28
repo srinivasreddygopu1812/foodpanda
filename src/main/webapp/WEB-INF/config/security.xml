@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<http access-decision-manager-ref="accessDecisionManager">
+	
+	<intercept-url pattern="/editView" access="USER,ADMIN" />
+	<intercept-url pattern="/delete" access="ADMIN" />
+	<!-- <http-basic/> -->
+	<form-login login-page="/goToLogin" default-target-url="/defaultTarget" authentication-failure-url="/goToLoginFail"
+	username-parameter="emailId" password-parameter="password"/>
+	
+	<logout logout-success-url="/goToLogin" />
+	<access-denied-handler error-page="/accessDenied"/>
+	</http>
+	
+	<authentication-manager>
+	  <authentication-provider>
+	  
+		<jdbc-user-service data-source-ref="connection"
+		  users-by-username-query=
+		    "select emailId,password, true from  versioning.foodpanda_user_details  where emailId=?"
+		  authorities-by-username-query=
+		    "select emailId, role from versioning.foodpanda_user_details where emailId=?  " />
+	  </authentication-provider>
+	</authentication-manager>
+	
+	
+	</beans:beans>
+	
+	
+	
+	
+	
+	
+	<!-- <authentication-manager>
+	  <authentication-provider> 
+	    <user-service>
+		<user name="Virat@gmail.com" password="virat" authorities="ROLE_ADMIN" />
+		<user name="dhoni@gmail.com" password="dhoni" authorities="ROLE_USER" />
+		<user name="dhoni1@gmail.com" password="dhoni" authorities="ROLE_USER" />
+		<user name="Rohith@gmail.com" password="rohith" authorities="ROLE_USER" />
+	    </user-service>
+	  </authentication-provider>
+	</authentication-manager> -->
