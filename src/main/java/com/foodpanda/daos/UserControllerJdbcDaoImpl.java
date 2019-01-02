@@ -88,7 +88,7 @@ public class UserControllerJdbcDaoImpl implements Idaos {
 		
 	
 
-	public List<UserPojo> updateProfile(UserPojo up,String email,String mobile,String password ) {
+	public List<UserPojo> updateProfile(UserPojo up ) {
 		System.out.println("entered into updateProfile method !! UserControllerJdbcImpl");
 		System.out.println("---------jdbc code here-----");
 		System.out.println("exit from updateProfile method !! UserControllerJdbcImpl");
