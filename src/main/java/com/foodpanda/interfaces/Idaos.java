@@ -9,8 +9,6 @@ import com.foodpanda.pojos.UserPojo;
 public interface Idaos {
 	public void register(UserPojo up) throws ClassNotFoundException, SQLException;
 	public List<UserPojo> loginCheck(UserPojo up) throws SQLException;
-	public List<UserPojo> updateProfile(UserPojo up,String email,String mobile,String password );
-	public void deleteProfile(String email);
 	public  List<UserPojo> deleteUsers(String email);
 	public List  editView(String email);
 	public List updateView(UserPojo up);
@@ -19,3 +17,6 @@ public interface Idaos {
 	
 	
 }
+
+/*public List<UserPojo> updateProfile(UserPojo up );
+	public void deleteProfile(String email);*/

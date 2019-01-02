@@ -21,9 +21,9 @@
 	</form>
 
 
-	<!-- <a href="update.jsp">click here</a>to update your profile
+	<%-- <a href="${pageContext.request.contextPath}/goToUpdate">click here</a>to update your profile
 	</br>
-	<a href="delete.jsp">click here</a>to delete your profile -->
+	<a href="${pageContext.request.contextPath}/goToDelete">click here</a>to delete your profile --%>
 
 
 

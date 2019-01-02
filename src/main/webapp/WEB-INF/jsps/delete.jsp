@@ -8,7 +8,7 @@
 </head>
 <body>
 <font color="blue"> <h2>You can delete your profile here</h2></font></br>
-<form action="delete1">
+<form action="${pageContext.request.contextPath}/delete1">
 </br>
 <input type="submit" value="Delete Your profile"/>
 </form></br>
